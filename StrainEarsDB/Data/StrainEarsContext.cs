@@ -27,6 +27,22 @@ namespace StrainEarsDB.Data
                 .WithMany(a => a.Tracks)
                 .HasForeignKey(t => t.ArtistId)
                 .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<User>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<Artist>()
+                .HasIndex(a => a.ArtistLogin)
+                .IsUnique();
+
+            modelBuilder.Entity<Playlist>()
+                .HasIndex(p => new { p.PlaylistName, p.UserId })
+                .IsUnique();
+
+            modelBuilder.Entity<PlaylistTrack>()
+                .HasIndex(p => new { p.TrackId, p.PlaylistId })
+                .IsUnique();
         }
     }
 }

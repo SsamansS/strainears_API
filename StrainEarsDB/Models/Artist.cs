@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace StrainEarsDB.Models
 {
@@ -6,6 +7,7 @@ namespace StrainEarsDB.Models
     {
         public int Id { get; set; }
         public string ArtistName { get; set; } = null!;
+        public string ArtistLogin { get; set; } = null!;
         public string Country { get; set; } = null!;
 
         public ICollection<Track> Tracks { get; set; } = null!;
