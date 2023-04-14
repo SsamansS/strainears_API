@@ -11,6 +11,8 @@ namespace StrainEarsDB.Models
         public int Id { get; set; }
         public string PlaylistName { get; set; } = null!;
         public int UserId { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public string Category { get; set; } = null!;
 
         public User User { get; set; } = null!;
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; } = null!;

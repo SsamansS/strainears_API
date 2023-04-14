@@ -32,5 +32,26 @@ namespace StrainEarsDB
                 context.Albums.Add(album);
             }
         }
+        public static void AddTrack(Track track)
+        {
+            using (StrainEarsContext context = new StrainEarsContext())
+            {
+                context.Tracks.Add(track);
+            }
+        }
+        public static void CreatePlaylist(Playlist playlist)
+        {
+            using (StrainEarsContext context = new StrainEarsContext())
+            {
+                context.Playlists.Add(playlist);
+            }
+        }
+        public static void AddTrackToPlaylist(PlaylistTrack playlisttrack)
+        {
+            using (StrainEarsContext context = new StrainEarsContext())
+            {
+                context.PlaylistTracks.Add(playlisttrack);
+            }
+        }
     }
 }
