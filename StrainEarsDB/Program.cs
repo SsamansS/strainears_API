@@ -20,25 +20,37 @@ namespace StrainEarsDB
             //        }
             //    };
             //}
-            StrainEarsDbCommands.RegistrationArtist(new Artist()
-            {
-                ArtistName = "Artist1",
-                Country = "Kyrgyzstan"
+            StrainEarsDbCommands.AddTrack(new Track() { 
+                TrackName = "TrackOFArtist1",
+                ArtistId = 1
             });
-            StrainEarsDbCommands.RegistrationArtist(new Artist()
-            {
-                ArtistName = "Artist2",
-                Country = "China"
+
+            StrainEarsDbCommands.AddAlbum(new Album() { 
+                AlbumName = "Album of artist1",
+                ArtistId = 1,
+                ReleaseDate = DateTime.Now,
+                Category = "Punk"
             });
-            StrainEarsDbCommands.RegistrationArtist(new Artist()
+            StrainEarsDbCommands.AddAlbum(new Album()
             {
-                ArtistName = "Artist3",
-                Country = "Garman"
+                AlbumName = "Album of artist2",
+                ArtistId = 2,
+                ReleaseDate = DateTime.Now,
+                Category = "Rap"
             });
-            StrainEarsDbCommands.RegistrationArtist(new Artist()
+            StrainEarsDbCommands.AddAlbum(new Album()
             {
-                ArtistName = "Artist4",
-                Country = "Israel"
+                AlbumName = "Album of artist3",
+                ArtistId = 3,
+                ReleaseDate = DateTime.Now,
+                Category = "Folk"
+            });
+            StrainEarsDbCommands.AddAlbum(new Album()
+            {
+                AlbumName = "Album2 of artist3",
+                ArtistId = 3,
+                ReleaseDate = DateTime.Now,
+                Category = "Classic"
             });
             Console.WriteLine("Hello World!");
         }
