@@ -10,28 +10,48 @@ namespace StrainEarsDB
     {
         static void Main(string[] args)
         {
-            using(StrainEarsContext context = new StrainEarsContext())
-            {
-                //User user1 = new User()
-                //{
-                //    UserName = "user1",
-                //    Password = "pass1",
-                //    Email = "email1",
-                //    CreatedDate = new DateTime()
-                //};
-                //User userBef = context.Users.Find();
-                //Playlist playlist1 = new Playlist()
-                //{
-                //    PlaylistName = "playlist1",
-                //    UserId = context.Users..Find(x => x.Id == user1.Id)
-                //};
+            //using(StrainEarsContext context = new StrainEarsContext())
+            //{
+            //    List<Track> tracks = new List<Track>()
+            //    {
+            //        new Track()
+            //        {
+            //            TrackName = "Track"
+            //        }
+            //    };
+            //}
+            StrainEarsDbCommands.AddTrack(new Track() { 
+                TrackName = "TrackOFArtist1",
+                ArtistId = 1
+            });
 
-                var users = context.Users.Where(x => x.Id == 2);
-                foreach(User user in users)
-                {
-                    Console.WriteLine(user.UserName);
-                }
-            }
+            StrainEarsDbCommands.AddAlbum(new Album() { 
+                AlbumName = "Album of artist1",
+                ArtistId = 1,
+                ReleaseDate = DateTime.Now,
+                Category = "Punk"
+            });
+            StrainEarsDbCommands.AddAlbum(new Album()
+            {
+                AlbumName = "Album of artist2",
+                ArtistId = 2,
+                ReleaseDate = DateTime.Now,
+                Category = "Rap"
+            });
+            StrainEarsDbCommands.AddAlbum(new Album()
+            {
+                AlbumName = "Album of artist3",
+                ArtistId = 3,
+                ReleaseDate = DateTime.Now,
+                Category = "Folk"
+            });
+            StrainEarsDbCommands.AddAlbum(new Album()
+            {
+                AlbumName = "Album2 of artist3",
+                ArtistId = 3,
+                ReleaseDate = DateTime.Now,
+                Category = "Classic"
+            });
             Console.WriteLine("Hello World!");
         }
     }

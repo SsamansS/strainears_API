@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StrainEarsDB.Data;
 
 namespace StrainEarsDB.Migrations
 {
     [DbContext(typeof(StrainEarsContext))]
-    partial class StrainEarsContextModelSnapshot : ModelSnapshot
+    [Migration("20230414113002_AddCatogoriesForPlaylists")]
+    partial class AddCatogoriesForPlaylists
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -133,7 +135,7 @@ namespace StrainEarsDB.Migrations
                     b.Property<int?>("AlbumId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ArtistId")
+                    b.Property<int?>("ArtistId")
                         .HasColumnType("int");
 
                     b.Property<string>("TrackName")
@@ -226,8 +228,7 @@ namespace StrainEarsDB.Migrations
                     b.HasOne("StrainEarsDB.Models.Artist", "Artist")
                         .WithMany("Tracks")
                         .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Album");
 
