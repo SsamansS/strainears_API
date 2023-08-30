@@ -11,12 +11,33 @@ namespace StrainEarsDB
 {
     public static class StrainEarsDbCommands
     {
+        public static List<Track> GetAllTracks()
+        {
+            using (StrainEarsContext context = new StrainEarsContext())
+            {
+                List<Track> tracks = context.Tracks.ToList();
+
+                return tracks;
+            }
+        }
+        public static List<PlaylistTrack> GetTracksByPlaylistId(int playlistId)
+        {
+            using (StrainEarsContext context = new StrainEarsContext())
+            {
+                List<PlaylistTrack> tracks = context.PlaylistTracks
+                    .Where(u => u.PlaylistId == playlistId).ToList();
+
+                return tracks;
+            }
+        }
         public static List<Playlist> GetPlaylistsByUserId(int userId)
         {
             using (StrainEarsContext context = new StrainEarsContext())
             {
-                return context.Playlists
-                    .Where(u => u.Id == userId) as List<Playlist>;
+                List<Playlist> playlists = context.Playlists
+                    .Where(u => u.UserId == userId).ToList();
+
+                return playlists;
             }
         }
         public static void RegistrationUser(User user)

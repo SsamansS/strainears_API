@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace StrainEarsAPI
+namespace StrainAPI
 {
     public class Startup
     {
@@ -30,25 +30,18 @@ namespace StrainEarsAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "StrainEarsAPI", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "StrainAPI", Version = "v1" });
             });
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAllOrigins",
-            //        builder => builder.AllowAnyOrigin());
-            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.UseCors("AllowAllOrigins");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StrainEarsAPI v1"));
-                app.UseDeveloperExceptionPage();
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "StrainAPI v1"));
             }
 
             app.UseHttpsRedirection();

@@ -6,13 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http.Cors;
 
-namespace StrainEarsAPI.Controllers
+namespace StrainAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[EnableCors(origins: "https://localhost:44386", headers: "*", methods: "*")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -28,7 +26,6 @@ namespace StrainEarsAPI.Controllers
         }
 
         [HttpGet]
-        [DisableCors]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
@@ -42,11 +39,24 @@ namespace StrainEarsAPI.Controllers
         }
 
         [HttpGet]
-        [DisableCors]
-        public IEnumerable<string> GetPlaylistsByUser()
+        [Route("/Playlists/{userId}")]
+        public IEnumerable<Playlist> GetPlaylists(int userId)
         {
-            //return StrainEarsDbCommands.GetPlaylistsByUserId(userId);
-            return new List<string>() { };
+            return StrainEarsDbCommands.GetPlaylistsByUserId(userId);
+        }
+
+        [HttpGet]
+        [Route("/Tracks")]
+        public IEnumerable<Track> GetTracks()
+        {
+            return StrainEarsDbCommands.GetAllTracks();
+        }
+
+        [HttpPut]
+        public IActionResult RegistrationUser([FromBody] User userInfo)
+        {
+            StrainEarsDbCommands.RegistrationUser(userInfo);
+            return Ok();
         }
     }
 }
